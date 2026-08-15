@@ -6,9 +6,9 @@
 #
 # Contains the list of repositories to sync.
 repositories=(
-	git@github.com:trakli/trakli-webservice
-	git@github.com:trakli/trakli-ui
-	git@github.com:trakli/trakli-mobile
+	git@github.com:trakli/webservice
+	git@github.com:trakli/webui
+	git@github.com:trakli/mobile
 )
 
 
