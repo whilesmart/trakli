@@ -40,6 +40,19 @@ The mobile app keeps working offline and syncs when it reconnects.
 - **Your data, your deployment:** use the hosted service or run the open-source
   stack yourself.
 
+## Self-hosting
+
+Trakli will offer two ways to run the complete web stack:
+
+- **Docker Compose:** run the web app and webservice together with the required
+  configuration.
+- **All-in-one image:** run the web app and webservice from a single container
+  image.
+
+Users can choose the option that best fits their environment. This repository
+documents and coordinates the deployment options. Their implementation belongs
+in the application repositories.
+
 ## Repositories
 
 This repository coordinates the local development environment. Trakli's
