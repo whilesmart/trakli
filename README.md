@@ -1,6 +1,6 @@
 <p align="center"><a href="https://trakli.app"><img src="./logo.svg" width="400" alt="Trakli"></a></p>
 
-<p align="center"><img src="https://raw.githubusercontent.com/trakli/webservice/main/.github/assets/trakli-dashboard-showcase.png" width="820" alt="Trakli web dashboard and mobile app showing balances, spending, and recent transactions"></p>
+<p align="center"><img src="./.github/assets/trakli-dashboard-showcase.png" width="820" alt="Trakli web dashboard and mobile app showing balances, spending, and recent transactions"></p>
 
 # Trakli
 
