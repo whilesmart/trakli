@@ -1,8 +1,7 @@
-# This is an example of local configuration file that you want to
-# use if you're not an OONI developer to disable private stuff.
+# Copy this file to local.bash to override the default repository list.
 
 repositories=(
-	git@github.com:trakli/trakli-webservice
-	git@github.com:trakli/trakli-ui
-	git@github.com:trakli/trakli-mobile
+	git@github.com:trakli/webservice
+	git@github.com:trakli/webui
+	git@github.com:trakli/mobile
 )
