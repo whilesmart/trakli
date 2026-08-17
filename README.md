@@ -42,25 +42,55 @@ The mobile app keeps working offline and syncs when it reconnects.
 
 ## Self-hosting
 
-Trakli will offer two ways to run the complete web stack:
+Run the complete web stack (API, worker, web UI, MySQL, Redis) with a single
+command. The stack pulls the published images from
+`ghcr.io/trakli/webservice` and `ghcr.io/trakli/webui` — no source checkout
+or build step is required.
 
-- **Docker Compose:** run the web app and webservice together with the required
-  configuration.
-- **All-in-one image:** run the web app and webservice from a single container
-  image.
+### Prerequisites
 
-Users can choose the option that best fits their environment. This repository
-documents and coordinates the deployment options. Their implementation belongs
-in the application repositories.
+- Docker with Docker Compose
+- A domain (or `localhost`) and, for production, a TLS-terminating reverse proxy
+  in front of the web UI — the auth cookie is set with the `Secure` flag, so
+  plain HTTP will silently fail login.
+
+### Quick start
+
+```bash
+git clone git@github.com:trakli/trakli.git
+cd trakli
+cp .env.selfhost.example .env
+# Edit .env — at minimum set APP_KEY, APP_URL, CORS_ALLOWED_ORIGINS,
+# and NUXT_PUBLIC_API_BASE_URL (see the inline comments).
+docker compose -f docker-compose.selfhost.yml up -d
+```
+
+Then open the web UI at `http://localhost:3000` (or your configured host/port).
+
+- `docker-compose.selfhost.yml` — the self-contained stack. This repository is
+  the home of this file; the application images are built and published from
+  `trakli/webservice` and `trakli/webui`.
+- `.env.selfhost.example` — every variable the stack needs, with safe defaults.
+- Optional features (AI assistant, realtime) are off by default and enabled with
+  Compose profiles:
+
+  ```bash
+  docker compose -f docker-compose.selfhost.yml --profile ai up -d
+  docker compose -f docker-compose.selfhost.yml --profile realtime up -d
+  ```
+
+To upgrade, bump `IMAGE_TAG` / `WEBUI_IMAGE_TAG` in `.env` and re-run
+`docker compose -f docker-compose.selfhost.yml up -d`.
 
 ## Repositories
 
-This repository coordinates the local development environment. Trakli's
-applications and public sites live in separate repositories.
+This repository coordinates Trakli's self-hosting and local development
+environments. Trakli's applications and public sites live in separate
+repositories.
 
 | Project | Repository |
 | --- | --- |
-| Development environment | [trakli/trakli](https://github.com/trakli/trakli) |
+| Self-hosting & development | [trakli/trakli](https://github.com/trakli/trakli) |
 | Backend and API | [trakli/webservice](https://github.com/trakli/webservice) |
 | Web app | [trakli/webui](https://github.com/trakli/webui) |
 | Mobile app | [trakli/mobile](https://github.com/trakli/mobile) |
